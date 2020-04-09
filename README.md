@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## CS7641-Spring 2020 Project 27
 
 You can use the [editor on GitHub](https://github.com/jaewon-lee-github/CS7641-Spring-2020-project-27/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
