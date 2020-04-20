@@ -10,16 +10,14 @@ We apply DNN
 
 ## Supervised
 
-# Data Collection
-We gathered the data from the website of [Baseball Reference](https://www.baseball-reference.com/). 
-Hall-of-Fame-eligible candidates must meet the following requirements.
+# Data Collection & Filtering
+We gathered the data from the website of [Baseball Reference](https://www.baseball-reference.com/). This data are containing every players who have played or played on the MLB, so we can reduce the size of data set by filtering who is absolutely not eligible to Hall of Fame. Hall-of-Fame-eligible candidates must meet the following requirements.
 <blockquote>
-<p> A baseball player must have been active as a player in the Major Leagues at some time during a period beginning fifteen (15) years before and ending five (5) years prior to election.</p>
-<p> Player must have played in each of ten (10) Major League championship seasons, some part of which must have been within the period described in 3(A).</p>
+<p> A baseball player must have been active as a player in the Major Leagues at some time <b>during a period beginning fifteen (15) years before and ending five (5) years prior to election.</b></p>
+<p> Player must have played in each of <b>ten (10) Major League championship seasons</b>, some part of which must have been within the period described in 3(A).</p>
 <p> Player shall have ceased to be an active player in the Major Leagues at least five (5) calendar years preceding the election but may be otherwise connected with baseball.</p>
-<p> In case of the death of an active player or a player who has been retired for less than five (5) full years, a candidate who is otherwise eligible shall be eligible in the next regular election held at least six (6) months after the date of death or after the end of the five (5) year period, whichever occurs first.</p>
-<p> Any player on Baseball's ineligible list shall not be an eligible candidate.</p>
--- <cite>Hall of Fame official Site</cite>
+<p>...</p>
+-- <cite>Hall of Fame official Site</cite> [1]
 </blockquote>
 
 
@@ -32,5 +30,4 @@ Hall-of-Fame-eligible candidates must meet the following requirements.
 # Conclusion
 
 # References 
-1. https://baseballhall.org/hall-of-famers/rules/bbwaa-rules-for-election
-2. 
+[1] https://baseballhall.org/hall-of-famers/rules/bbwaa-rules-for-election
