@@ -23,18 +23,22 @@ We gathered the data from the website of [Baseball Reference](https://www.baseba
 # Analysis
 ## Unsupervised
 ## Supervised : Neural Network
+
+  <img src="Figures/MSE_equation.PNG" alt="hi" class="inline" width="300" />
+
 ### Neural Net structure
   <img src="Figures/Nerual_Net_MLB.PNG" alt="hi" class="inline"/>
-  <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline"/>  
+
 ### All-time data
   <img src="Figures/Confusion_Matrix_Data1.PNG" alt="hi" class="inline"/>
-  <img src="Figures/MSE_equation.PNG" alt="hi" class="inline"/>
+  <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline"/>  
+
 ### 10-year data
   <img src="Figures/Confusion_Matrix_Data2.PNG" alt="hi" class="inline"/>
   <img src="Figures/Graph_MSE_Data2_10years.PNG" alt="hi" class="inline"/>
 
 # Conclusion
-
+We are greate! as you know :)
 
 # References 
 [1] https://baseballhall.org/hall-of-famers/rules/bbwaa-rules-for-election
