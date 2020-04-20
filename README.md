@@ -31,11 +31,11 @@ We gathered the data from the website of [Baseball Reference](https://www.baseba
 
 ### All-time data
   <img src="Figures/Confusion_Matrix_Data1.PNG" alt="hi" class="inline" width="600"/>
-  <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline" width="600"/>  
+  <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline" width="480"/>  
 
 ### 10-year data
   <img src="Figures/Confusion_Matrix_Data2.PNG" alt="hi" class="inline" width="600"/>
-  <img src="Figures/Graph_MSE_Data2_10years.PNG" alt="hi" class="inline" width="600"/>
+  <img src="Figures/Graph_MSE_Data2_10years.PNG" alt="hi" class="inline" width="480"/>
 
 # Conclusion
 We are greate! as you know :)
