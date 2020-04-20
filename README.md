@@ -27,15 +27,15 @@ We gathered the data from the website of [Baseball Reference](https://www.baseba
   <img src="Figures/MSE_equation.PNG" alt="hi" class="inline" width="300" />
 
 ### Neural Net structure
-  <img src="Figures/Nerual_Net_MLB.PNG" alt="hi" class="inline"/>
+  <img src="Figures/Nerual_Net_MLB.PNG" alt="hi" class="inline" width="600" />
 
 ### All-time data
-  <img src="Figures/Confusion_Matrix_Data1.PNG" alt="hi" class="inline"/>
-  <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline"/>  
+  <img src="Figures/Confusion_Matrix_Data1.PNG" alt="hi" class="inline" width="600"/>
+  <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline" width="600"/>  
 
 ### 10-year data
-  <img src="Figures/Confusion_Matrix_Data2.PNG" alt="hi" class="inline"/>
-  <img src="Figures/Graph_MSE_Data2_10years.PNG" alt="hi" class="inline"/>
+  <img src="Figures/Confusion_Matrix_Data2.PNG" alt="hi" class="inline" width="600"/>
+  <img src="Figures/Graph_MSE_Data2_10years.PNG" alt="hi" class="inline" width="600"/>
 
 # Conclusion
 We are greate! as you know :)
