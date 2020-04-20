@@ -20,14 +20,21 @@ We gathered the data from the website of [Baseball Reference](https://www.baseba
 -- <cite>Hall of Fame official Site</cite> [1]
 </blockquote>
 
-
-
 # Analysis
 ## Unsupervised
-## Supervised
-
+## Supervised : Neural Network
+### Neural Net structure
+  <img src="Figures/Nerual_Net_MLB.PNG" alt="hi" class="inline"/>
+  <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline"/>  
+### All-time data
+  <img src="Figures/Confusion_Matrix_Data1.PNG" alt="hi" class="inline"/>
+  <img src="Figures/MSE_equation.PNG" alt="hi" class="inline"/>
+### 10-year data
+  <img src="Figures/Confusion_Matrix_Data2.PNG" alt="hi" class="inline"/>
+  <img src="Figures/Graph_MSE_Data2_10years.PNG" alt="hi" class="inline"/>
 
 # Conclusion
+
 
 # References 
 [1] https://baseballhall.org/hall-of-famers/rules/bbwaa-rules-for-election
