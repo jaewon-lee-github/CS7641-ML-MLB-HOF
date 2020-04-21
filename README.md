@@ -63,6 +63,8 @@ For each data set, we will use two or three primary components from PCA componen
 
 If we look through the ground truth, the outliers in the graph are mostly HoFers. However, HoFers certainly exists among non-outlier players, and we cannot classify them with clustering algorithms which cannot catch outliers, like kmeans. Hierarchical clustering is not an outlier-specific algorithm, so it can't be classified accurately, but it can catch prominent outliers. DBSCAN can classify outliers fairly accurately, and GMM can also search outliers with similar accuracy by increasing the number of mixtures. Because it is unsupervised learning, HoFers with similar stats to other players cannot be classified.
 
+<img src="unsupervised_learning/Data1_all_time.png" alt="hi" class="inline" width="600" />
+
 Legend
 - Two PCA components
     - Blue: Non-HoF
@@ -70,11 +72,10 @@ Legend
 - Three PCA components
     - Yellow: Non-HoF
     - Purple: HoF
-<img src="unsupervised_learning/Data1_all_time.png" alt="hi" class="inline" width="600" />
-
 
 ## Clustring Result: Data Set 2 (10 year)
 Unlike the all-time data itself, most players are aggregated and distributed, there are few outliers, and there are more HoFers than all-time data that show similar stats to other players. Therefore, even when searching with DBSCAN, only a fraction of HoFers were classified than all-time data.
+
 <img src="unsupervised_learning/Data2_Ten_year.png" alt="hi" class="inline" width="600" />
 
 
@@ -94,6 +95,7 @@ For preventing overfitting, if the validation error increases for 20 epoch in a 
   <img src="Figures/MSE_equation.PNG" alt="hi" class="inline" width="300" />
 
 ## DATA1: Train and Test
+
 Training Data set
 Players who are confirmed to be eliminated from the complete HOF + players registered in the HOF
 Test Data set
@@ -102,6 +104,7 @@ Players with chance (total 97)
  -Of the 97 on the list, 23 at the end have been eliminated from the vote so far, but they are still candidates.
 
 ## Data1 Result 
+
   <img src="Figures/Confusion_Matrix_Data1.PNG" alt="hi" class="inline" width="600"/>
   <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline" width="480"/>  
  As shown in the graph, validation MSE error converges to approximately 0.04X.
