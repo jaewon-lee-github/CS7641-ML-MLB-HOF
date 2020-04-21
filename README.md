@@ -9,7 +9,7 @@ Neural network can classify the object when the number of given data sets are su
 
 # Data Collection and Filtering
 We gathered the data from the website of [Baseball Reference](https://www.baseball-reference.com/).
-  <img src="Figures/Baseball reference.png" alt="hi" class="inline" width="400" />
+  <img src="Figures/Baseball reference.png" alt="hi" class="inline" width="600" />
 These data are containing the players who is absolutely not eligible to Hall of Fame, so we need to reduce the size of data set by filtering them. We have cut off the data of player who has <b>BA is lower than 0.2 and WAR lower than 10.</b>
 
 # Chosen statitics lists
