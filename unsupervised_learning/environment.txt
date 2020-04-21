@@ -1,0 +1,30 @@
+Legend
+- 2D
+Blue: Non-HoF
+Orange: HoF
+
+- 3D
+Yellow: Non-HoF
+Purple: HoF
+
+- Variance
+PCA 2
+all-year: [57.49%, 15,65%] (73.14%)
+10-year: [49.40%, 16.98%] (66.38%)
+
+PCA 3
+all-year: [57.49%, 15.65%, 10.46%] (83.60%)
+10-year: [49.40%, 16.98%, 11.91%] (78.29%)
+
+- KMeans
+K = 2
+
+- Hierarchical
+Cut to make 2 clusters
+
+- DBSCAN
+3D DBSCAN, 10-year: (eps=0.95, minPts=8)
+All other datasets: (eps=0.75, minPts=8)
+
+- GMM
+With 2 / 4 Mixtures
