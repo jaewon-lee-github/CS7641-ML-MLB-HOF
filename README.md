@@ -9,6 +9,7 @@ Neural network can classify the object when the number of given data sets are su
 
 # Data Collection and Filtering
 We gathered the data from the website of [Baseball Reference](https://www.baseball-reference.com/).
+
   <img src="Figures/Baseball reference.png" alt="hi" width="600" />
 
 These data are containing the players who is absolutely not eligible to Hall of Fame, so we need to reduce the size of data set by filtering them. We have cut off the data of player who has <b>BA is lower than 0.2 and WAR lower than 10, </b> and we do not deal with pitcher statistics in this project.
@@ -57,13 +58,14 @@ The following steps are used for preprocessing
 
 ## PCA Component analysis
 For each data set, we will use two or three primary components from PCA component analysis. The graph belows shows that using three PCA components can describe the original data set more precisely, and when the number of PCA components are same, then all-time data preserve more information than 10-year data.
-<img src="Figures/PCA Components.png" alt="PCA components" width="400" />
+
+<img src="Figures/PCA Components.png" alt="PCA components" width="500" />
 
 ## Clustring Result: Data Set 1 (All time)
 
 If we look through the ground truth, the outliers in the graph are mostly HoFers. However, HoFers certainly exists among non-outlier players, and we cannot classify them with clustering algorithms which cannot catch outliers, like kmeans. Hierarchical clustering is not an outlier-specific algorithm, so it can't be classified accurately, but it can catch prominent outliers. DBSCAN can classify outliers fairly accurately, and GMM can also search outliers with similar accuracy by increasing the number of mixtures. Because it is unsupervised learning, HoFers with similar stats to other players cannot be classified.
 
-<img src="unsupervised_learning/Data1_all_time.png" alt="hi" class="inline" width="600" />
+<img src="unsupervised_learning/Data1_all_time.png" alt="hi" class="inline" width="800" />
 
 Legend
 - Two PCA components
@@ -76,7 +78,7 @@ Legend
 ## Clustring Result: Data Set 2 (10 year)
 Unlike the all-time data itself, most players are aggregated and distributed, there are few outliers, and there are more HoFers than all-time data that show similar stats to other players. Therefore, even when searching with DBSCAN, only a fraction of HoFers were classified than all-time data.
 
-<img src="unsupervised_learning/Data2_Ten_year.png" alt="hi" class="inline" width="600" />
+<img src="unsupervised_learning/Data2_Ten_year.png" alt="hi" class="inline" width="800" />
 
 
 # Analysis: Supervised Learning with Neural Network
