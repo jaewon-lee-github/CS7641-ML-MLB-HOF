@@ -124,14 +124,14 @@ Players with chance (total 97)
 ## Data1 Result 
   <img src="Figures/Confusion_Matrix_Data1.PNG" alt="hi" class="inline" width="600"/>
   <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline" width="480"/>  
--Test progress while changing hyper parameters and activation / loss function
--Validation MSE error converges to approximately 0.04X.
--In the graph below, blue is a test error and orange is a validation error.
--The error is about 5.914% when the prediction accuracy is checked by turning the training data through the Traned Network (varies slightly with each training)
-DATA1 Test result (HOF expected, see MLB_dataset_seunghyup.xlsx file Test & Pred tab)
--I expect quite a lot of players who are voting to eventually become HOF. This seems to be because these players are good at Stat, but have a so-called scab, and the reason why they are still voting is large.
--Among those who haven't voted yet are expected to be HOF, the players who are very popular are David Ortiz, Alex Rodriguez, Carlos Beltran, Joe Mauer, Adrian Beltre, Ichiro Suzuki, etc.
- : I think it can be said that there is some accuracy (?)
+
+ - Test progress while changing hyper parameters and activation / loss function
+ - Validation MSE error converges to approximately 0.04X.
+ - In the graph below, blue is a test error and orange is a validation error.
+ - The error is about 5.914% when the prediction accuracy is checked by turning the training data through the Traned Network (varies slightly with each training) DATA1 Test result (HOF expected, see MLB_dataset_seunghyup.xlsx file Test & Pred tab)
+ - I expect quite a lot of players who are voting to eventually become HOF. This seems to be because these players are good at Stat, but have a so-called scab, and the reason why they are still voting is large.
+ - Among those who haven't voted yet are expected to be HOF, the players who are very popular are David Ortiz, Alex Rodriguez, Carlos Beltran, Joe Mauer, Adrian Beltre, Ichiro Suzuki, etc.
+ - I think it can be said that there is some accuracy (?)
 
 ## DATA2: Train and test
 
@@ -142,11 +142,12 @@ Current players' cumulative data for the first 10 years
 ## Data2 Result 
   <img src="Figures/Confusion_Matrix_Data2.PNG" alt="hi" class="inline" width="600"/>
   <img src="Figures/Graph_MSE_Data2_10years.PNG" alt="hi" class="inline" width="480"/>
--Training in the same way
--The HOF is determined based on the cumulative result, and the accuracy of the player's cumulative result is lower than the previous 10 years. (6.XX%)
--Still, it seems to predict well what will be expected when predicting active players with test data.
-  : A player who is predicted to go HOF unconditionally like Albert Pujols predicts a 99.9% probability.
-  : Mike Trout predicted with a 99% probability even though he only ran with the cumulative result of 9 years. (The best annual salary player)
+
+- Training in the same way
+- The HOF is determined based on the cumulative result, and the accuracy of the player's cumulative result is lower than the previous 10 years. (6.XX%)
+- Still, it seems to predict well what will be expected when predicting active players with test data. 
+    - A player who is predicted to go HOF unconditionally like Albert Pujols predicts a 99.9% probability.
+    - Mike Trout predicted with a 99% probability even though he only ran with the cumulative result of 9 years. (The best annual salary player)
 
 # Conclusion & Future work
 As we can see in ground truth graph, Most of HoFers have exceptional statistics, so clustering algorithms which can detect the outlier well are predicting HoFers well too. But HoFers who didn't show the preeminent performance than the others cannot easily categorized with the unsupervised learning method.
