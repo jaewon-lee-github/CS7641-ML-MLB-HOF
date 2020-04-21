@@ -9,11 +9,12 @@ Neural network can classify the object when the number of given data sets are su
 
 # Data Collection and Filtering
 We gathered the data from the website of [Baseball Reference](https://www.baseball-reference.com/).
-  <img src="Figures/Baseball reference.png" alt="hi" class="inline" width="600" />
-These data are containing the players who is absolutely not eligible to Hall of Fame, so we need to reduce the size of data set by filtering them. We have cut off the data of player who has <b>BA is lower than 0.2 and WAR lower than 10.</b>
+  <img src="Figures/Baseball reference.png" alt="hi" width="600" />
 
-# Chosen statitics lists
-For data anlysis, we use feature sets belows. Theses features are crucial data sets which show the player's performance clearly and draft 
+These data are containing the players who is absolutely not eligible to Hall of Fame, so we need to reduce the size of data set by filtering them. We have cut off the data of player who has <b>BA is lower than 0.2 and WAR lower than 10, </b> and we do not deal with pitcher statistics in this project.
+
+# Chosen Fearue Lists
+For data anlysis, we use the feature sets belows. Theses features are crucial data sets in the player draft or selection because they show the player's performance clearly
 1. BA (Batting AVerage)
 2. WAR (Wins Above Replacement)
 3. G (Game)
@@ -28,10 +29,13 @@ For data anlysis, we use feature sets belows. Theses features are crucial data s
 12. OBP (On-Base Percentage)
 13. SLG (Slugging Average)
 
+These statistics are only for batters, because pitchers uses totally different statistics. 
+
 # Data Categorize
-We categorize the data for two category. Data 1 is including MLB player's all-time data and data 2 is containing the data of the first 10 years. With the-first-10-year data of HoFers, we could predict the probability of being Hofers of rookies who have not spend 10 years as a player.
+We categorize the data for two category. Data 1 is including MLB player's all-time data and data 2 is containing the player data of the first 10 years. With the-first-10-year data, we could predict the probability of being Hofers of rookies who have not spend over 10 years as a player yet
+
 ## Data Set 1: All-time data
-- Filtering Conditions
+
     - the number of games played by the player > 1000
     - BA > 0.2
     - WAR >= 10
@@ -60,7 +64,6 @@ The following steps are used for preprocessing
 3. Categorize the players with various clustering algorithm
 4. Check whether HoFers are included in the different cluster of non HoFers
 
-
 ## Clustring Result : Data set 1
 ### PCA Component analysis
 all-year
@@ -75,15 +78,8 @@ Legend
     - Yellow: Non-HoF
     - Purple: HoF
 
-
-Ground truth 그래프를 통해 살펴보면
-그래프의 outlier은 거의 대부분 HoF 선수들입니다.
-다만 outlier가 아닌 선수들 중에서도 HoF는 분명히 존재합니다.
-kmeans 같이 outlier를 못 잡아내는 clustering 알고리즘으로는 분류 불가능합니다.
-hierarchical은 outlier에 특화된 알고리즘이 아니므로, 정확하게는 분류하지 못하지만 엄청난 outlier들은 잡아낼 수 있습니다.
-outlier을 잘 찾아내는 clustering 알고리즘들로는 그래도 정확하게 HoFer을 구분해낼 수 있습니다.
-DBSCAN은 outlier들을 상당히 정확하게 분류할 수 있고, GMM도 mixture 수를 늘리면 비슷한 정확도로 outlier들을 탐색할 수 있습니다.
-Unsupervised learning이므로 다른 선수와 비슷한 스탯을 보이는 HoFer들은 분류해낼 수 없었습니다.
+If we look through the ground truth, the outliers in the graph are mostly HoFers.
+However, HoFers certainly exists among non-outlier players, and we cannot classify them with clustering algorithms which cannot catch outliers, like kmeans. Hierarchical clustering is not an outlier-specific algorithm, so it can't be classified accurately, but it can catch prominent outliers. DBSCAN can classify outliers fairly accurately, and GMM can also search outliers with similar accuracy by increasing the number of mixtures. Because it is unsupervised learning, HoFers with similar stats to other players cannot be classified.
 
 ## Clustring Result : Data set 2
 ### PCA Component analysis
@@ -99,51 +95,58 @@ Legend
     - Yellow: Non-HoF
     - Purple: HoF
 
-데이터 자체가 all-time data와는 달리 대부분의 선수들이 뭉쳐서 분포하고, outlier가 별로 없으며, 다른 선수와 비슷한 스탯을 보이는 HoFer들이 All-time data보다 더 많습니다.
-따라서 DBSCAN 등으로 탐색해도 all-time data보다는 훨씬 적은 수의 HoFer들만을 분류해냈습니다.
+Unlike the all-time data itself, most players are aggregated and distributed, there are few outliers, and there are more HoFers than all-time data that show similar stats to other players. Therefore, even when searching with DBSCAN, only a fraction of HoFers were classified than all-time data.
 
 # Analysis: Supervised Learning with Neural Network
 ## Neuarl Network information
+- Neural Network Architecture 
+
+<img src="Figures/Nerual_Net_MLB.PNG" alt="hi" class="inline" width="600" />
+
 - hidden dimesion : 50
-- layer 갯수 : 2
-- Activation function : ReLU, 마지막에 sigmoid.
-- Validation 데이터 비율 : 0.2
-- Validation error 증가 epoch제한을 20으로 두어, 만약 연속으로20번동안 validation error가 증가할 경우 Stop 및 증가 이전 Trained Network가 최종. (Overfitting 방지용)
-  <img src="Figures/Nerual_Net_MLB.PNG" alt="hi" class="inline" width="600" />
+- The number of layers : 2
+- Activation function : ReLU, sigmoid (the last only)
+- Validation data ratio : 0.2
+- For preventing overfitting, if the validation error increases for 20 epoch in a row, we stop there and set final neural network as the trained network before validation error increases
+- Error Caclulation: Mean Square Error
+
   <img src="Figures/MSE_equation.PNG" alt="hi" class="inline" width="300" />
 
 ## DATA1: Train and test
-Training Data set 
-완전 HOF에서 탈락확정된 선수들 + HOF에 등록된 선수들이 
+
+Training Data set
+Players who are confirmed to be eliminated from the complete HOF + players registered in the HOF
 Test Data set
-아직 은퇴한지 5년이 안되어(2015년 이후 은퇴) HOF후보군이 조건이 아직 안되었거나, 아직 후보군이어서 HOF등록의 
-기회가 남은 선수들 (총 97명)
- - 리스트에 있는 97명 중 끝부분 23명이 지금까지 투표에서는 탈락하였지만 아직 후보군인 선수들입니다
+It has not been 5 years since he retired (retired after 2015).
+Players with chance (total 97)
+ -Of the 97 on the list, 23 at the end have been eliminated from the vote so far, but they are still candidates.
+
 ## Data1 Result 
   <img src="Figures/Confusion_Matrix_Data1.PNG" alt="hi" class="inline" width="600"/>
   <img src="Figures/Graph_MSE_Data1.PNG" alt="hi" class="inline" width="480"/>  
-- hyper parameter들 변경 및 activation/loss function 변경해보며 테스트진행
-- Validation MSE error가 대략 0.04X로 수렴.
-- 아래 그래프에서 파란색이 test error, 주황색이 validation error
-- Traned Network로 Training Data를 돌려 예측정확도 확인 시 에러는 약5.914% (트레이닝 때마다 약간변동)
-DATA1 Test 결과 (HOF 예상, MLB_dataset_seunghyup.xlsx파일 Test&Pred탭 참조 )
-- 투표 중인 선수들 중 결국 HOF될거라고 꽤 많이 예상하는데.. 이는 이 선수들이 Stat은 좋으나 소위 약쟁이 딱지가 붙어 있어 못붙고 계속 투표중인 이유가 크기 때문인듯 함.
-- 아직 투표를 안한 선수 중 HOF가 될거라 예상되는 결과 선수를 보면 David Ortiz, Alex Rodriguez, Carlos Beltran, Joe Mauer, Adrian Beltre, Ichiro Suzuki 등 매우 유명했고 실제로 언론에서 HOF의 확률이 높다는 선수들임.
- : 나름 어느정도 정확도가 있다고 말할 수 있을듯함(?)
+-Test progress while changing hyper parameters and activation / loss function
+-Validation MSE error converges to approximately 0.04X.
+-In the graph below, blue is a test error and orange is a validation error.
+-The error is about 5.914% when the prediction accuracy is checked by turning the training data through the Traned Network (varies slightly with each training)
+DATA1 Test result (HOF expected, see MLB_dataset_seunghyup.xlsx file Test & Pred tab)
+-I expect quite a lot of players who are voting to eventually become HOF. This seems to be because these players are good at Stat, but have a so-called scab, and the reason why they are still voting is large.
+-Among those who haven't voted yet are expected to be HOF, the players who are very popular are David Ortiz, Alex Rodriguez, Carlos Beltran, Joe Mauer, Adrian Beltre, Ichiro Suzuki, etc.
+ : I think it can be said that there is some accuracy (?)
 
 ## DATA2: Train and test
+
 Training Data set
 Test Data set
-이중에서 은퇴 후 완전 HOF에서 탈락확정된 선수들 + HOF에 등록된 선수들이 초반 10년 누적기록이
-현역선수들 초반 10년 누적 데이터
+Among them, players who are determined to drop out of the complete HOF after retirement + players registered in the HOF have a cumulative record of the first 10 years
+Current players' cumulative data for the first 10 years
 ## Data2 Result 
   <img src="Figures/Confusion_Matrix_Data2.PNG" alt="hi" class="inline" width="600"/>
   <img src="Figures/Graph_MSE_Data2_10years.PNG" alt="hi" class="inline" width="480"/>
-- 동일한 방식으로 Training 진행
-- 아무래도 HOF가 누적결과를 바탕으로 결정되는것이고, 초반 10년성적만으로 그 선수의 누적결과를 보장하는게 아니라 이전보다는 정확도가 낮게 나옴. (6.XX%)
-- 그래도 Test데이터로 현역 선수들 예측 시 될놈될은 잘 예측하는것 같음.
-  : Albert Pujols 같은 무조건 HOF갈거라고 예측되는 선수는 99.9%확률이라고 예측합니다.
-  : Mike Trout 선수는 9년치 누적결과로만 돌렸는데도 99% 확률로 예측하였습니다. (현역 최고연봉선수)
+-Training in the same way
+-The HOF is determined based on the cumulative result, and the accuracy of the player's cumulative result is lower than the previous 10 years. (6.XX%)
+-Still, it seems to predict well what will be expected when predicting active players with test data.
+  : A player who is predicted to go HOF unconditionally like Albert Pujols predicts a 99.9% probability.
+  : Mike Trout predicted with a 99% probability even though he only ran with the cumulative result of 9 years. (The best annual salary player)
 
 # Conclusion & Future work
 As we can see in ground truth graph, Most of HoFers have exceptional statistics, so clustering algorithms which can detect the outlier well are predicting HoFers well too. But HoFers who didn't show the preeminent performance than the others cannot easily categorized with the unsupervised learning method.
