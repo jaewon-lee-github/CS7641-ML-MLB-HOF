@@ -57,9 +57,12 @@ The following steps are used for preprocessing
 
 ## PCA Component analysis
 For each data set, we will use two or three primary components from PCA component analysis. The graph belows shows that using three PCA components can describe the original data set more precisely, and when the number of PCA components are same, then all-time data preserve more information than 10-year data.
-<img src="Figures/PCA Components.pdf" alt="PCA components" width="400" />
+<img src="Figures/PCA Components.png" alt="PCA components" width="400" />
 
 ## Clustring Result: Data Set 1 (All time)
+
+If we look through the ground truth, the outliers in the graph are mostly HoFers. However, HoFers certainly exists among non-outlier players, and we cannot classify them with clustering algorithms which cannot catch outliers, like kmeans. Hierarchical clustering is not an outlier-specific algorithm, so it can't be classified accurately, but it can catch prominent outliers. DBSCAN can classify outliers fairly accurately, and GMM can also search outliers with similar accuracy by increasing the number of mixtures. Because it is unsupervised learning, HoFers with similar stats to other players cannot be classified.
+
 Legend
 - Two PCA components
     - Blue: Non-HoF
@@ -67,11 +70,13 @@ Legend
 - Three PCA components
     - Yellow: Non-HoF
     - Purple: HoF
+<img src="unsupervised_learning/Data1_all_time.png" alt="hi" class="inline" width="600" />
 
-If we look through the ground truth, the outliers in the graph are mostly HoFers. However, HoFers certainly exists among non-outlier players, and we cannot classify them with clustering algorithms which cannot catch outliers, like kmeans. Hierarchical clustering is not an outlier-specific algorithm, so it can't be classified accurately, but it can catch prominent outliers. DBSCAN can classify outliers fairly accurately, and GMM can also search outliers with similar accuracy by increasing the number of mixtures. Because it is unsupervised learning, HoFers with similar stats to other players cannot be classified.
 
 ## Clustring Result: Data Set 2 (10 year)
 Unlike the all-time data itself, most players are aggregated and distributed, there are few outliers, and there are more HoFers than all-time data that show similar stats to other players. Therefore, even when searching with DBSCAN, only a fraction of HoFers were classified than all-time data.
+<img src="unsupervised_learning/Data2_Ten_year.png" alt="hi" class="inline" width="600" />
+
 
 # Analysis: Supervised Learning with Neural Network
 ## Neuarl Network information
